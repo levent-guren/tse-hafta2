@@ -1,0 +1,11 @@
+<div>
+    <div class="mb-3">
+        <label for="adi" class="form-label">Adı</label>
+        <input type="text" [(ngModel)]="dto.adi" name="adi" class="form-control" id="adi">
+    </div>
+    <div class="mb-3">
+        <label for="soyadi" class="form-label">Soyadı</label>
+        <input type="text" [(ngModel)]="dto.soyadi" name="soyadi" class="form-control" id="soyadi">
+    </div>
+    <button (click)="ara()" class="btn btn-primary">Ara</button>
+</div>

@@ -1,0 +1,24 @@
+@if (personels.length==0) {
+Personel List is empty!
+} @else {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (personel of personels; track personel.id) {
+        <tr>
+            <td>{{personel.id}}</td>
+            <td>{{personel.name}}</td>
+            <td>{{personel.username}}</td>
+            <td>{{personel.email}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}

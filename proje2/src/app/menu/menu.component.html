@@ -1,0 +1,19 @@
+<div class="d-flex">
+    <div>
+        <div>
+            <button class="btn btn-primary" (click)="createPerson()" [routerLink]="['create-person']"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">Create
+                Person</button>
+        </div>
+        <div>
+            <button class="btn btn-primary mt-3" [routerLink]="['personel-list']" routerLinkActive="active"> Person
+                List</button>
+        </div>
+        <div>
+            <button class="btn btn-primary mt-3" [routerLink]="['search']" routerLinkActive="active"> Search </button>
+        </div>
+    </div>
+    <div class="mx-3">
+        <router-outlet />
+    </div>
+</div>

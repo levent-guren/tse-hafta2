@@ -1,0 +1,20 @@
+<div>
+    <form [formGroup]="createForm">
+        <div class="mb-3">
+            <label for="firstname" class="form-label">Firstname</label>
+            <input type="text" formControlName="firstname" class="form-control" id="firstname"
+                placeholder="Please enter your first name">
+        </div>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Lastname</label>
+            <input type="text" formControlName="lastname" class="form-control" id="lastname"
+                placeholder="Please enter your last name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" formControlName="email" class="form-control" id="email" placeholder="johndoe@server.com">
+        </div>
+        <button class="btn btn-primary" (click)="create()">Create</button>
+        <button class="btn btn-secondary ms-3">Cancel</button>
+    </form>
+</div>
