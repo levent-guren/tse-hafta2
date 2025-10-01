@@ -11,12 +11,10 @@ import { SearchDto } from '../dto/search-dto';
   styleUrl: './ana-sayfa.component.scss'
 })
 export class AnaSayfaComponent {
-  kriterr = new SearchDto('', '');
+  kriter: SearchDto;
 
   aramaYapildi(dto: SearchDto) {
-    console.log('AnaSayfa', dto);
-    this.kriterr = new SearchDto('', '');
-    this.kriterr = dto;
+    this.kriter = { ...dto };
   }
 
 }

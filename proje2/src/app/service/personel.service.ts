@@ -5,6 +5,7 @@ import { CreatePerson } from '../models/create-person';
 import { map, tap } from 'rxjs';
 import { APP_CONFIG } from '../app.config';
 import { SearchDto } from '../search/dto/search-dto';
+import { Person } from '../search/dto/person';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,12 @@ export class PersonelService {
   }
 
   getPersonelList() {
-    return this.http.get<Personel[]>(this.env.apiUrl + '/users');
+    return this.http.get<Personel[]>('/users');
   }
 
   savePerson(person: any) {
     return this.http
-      .post<CreatePerson>('https://jsonplaceholder.typicode.com/users', person)
+      .post<CreatePerson>('/users', person)
       .pipe(
         map((result) => {
           console.log('Personel yaratmada cevap döndü(map):', result);
@@ -36,11 +37,12 @@ export class PersonelService {
   }
 
   personelAra(dto: SearchDto) {
-    return this.http.post<Personel[]>('http://localhost:8080/',
+    return this.http.post<Person[]>('/query',
       {
         adi: dto.adi == '' ? null : dto.adi,
         soyadi: dto.soyadi == '' ? null : dto.soyadi,
-      }
+      },
+      { headers: { 'server': 'hoca' } }
     );
   }
 }

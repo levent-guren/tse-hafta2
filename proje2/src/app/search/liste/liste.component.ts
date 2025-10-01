@@ -1,16 +1,22 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SearchDto } from '../dto/search-dto';
+import { Person } from '../dto/person';
+import { PersonelService } from '../../service/personel.service';
+import { DatePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { UzunlukPipe } from '../../pipes/uzunluk.pipe';
 
 @Component({
   selector: 'app-liste',
   standalone: true,
-  imports: [],
+  imports: [UpperCasePipe, TitleCasePipe, DatePipe, UzunlukPipe],
   templateUrl: './liste.component.html',
   styleUrl: './liste.component.scss'
 })
 export class ListeComponent {
-
-  private _kriter = new SearchDto('', '');
+  private _kriter: SearchDto;
+  private personelService = inject(PersonelService);
+  kisiler: Person[] = [];
+  tarih = Date.now();
 
   @Input()
   get kriter() {
@@ -21,7 +27,13 @@ export class ListeComponent {
     this.aramaYap();
   }
   aramaYap() {
-    console.log('Liste Component.aramaYap', this._kriter);
+    if (this._kriter) {
+      this.personelService.personelAra(this._kriter).subscribe({
+        next: (result) => {
+          this.kisiler = result;
+        }
+      });
+    }
   }
 
 }

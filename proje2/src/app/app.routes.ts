@@ -5,12 +5,13 @@ import { PersonelListComponent } from './personel-list/personel-list.component';
 import { MenuComponent } from './menu/menu.component';
 import { CreatePersonComponent } from './create-person/create-person.component';
 import { AnaSayfaComponent } from './search/ana-sayfa/ana-sayfa.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     {
-        path: 'menu', component: MenuComponent,
+        path: 'menu', component: MenuComponent, canActivate: [authGuard],
         children: [
             { path: '', redirectTo: 'create-person', pathMatch: 'full' },
             { path: 'personel-list', component: PersonelListComponent },

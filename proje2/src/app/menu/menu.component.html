@@ -12,6 +12,9 @@
         <div>
             <button class="btn btn-primary mt-3" [routerLink]="['search']" routerLinkActive="active"> Search </button>
         </div>
+        <div>
+            <button (click)="logout()" class="btn btn-primary mt-3"> Logout </button>
+        </div>
     </div>
     <div class="mx-3">
         <router-outlet />

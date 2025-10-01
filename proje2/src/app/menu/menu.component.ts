@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,8 +12,13 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
 export class MenuComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
 
   createPerson() {
     this.router.navigate(['create-person'], { relativeTo: this.route });
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }
