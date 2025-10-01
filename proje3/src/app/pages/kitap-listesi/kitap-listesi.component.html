@@ -1,0 +1,16 @@
+<div class="tablo m-3">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Adı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (kitap of getKitaplar(); track kitap.id) {
+            <tr (click)="kitapSecildi(kitap.id)" class="satir">
+                <td><a href="#" (click)="$event.preventDefault()">{{kitap.adi}}</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

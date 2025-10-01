@@ -1,0 +1,35 @@
+@if(kitap==undefined) {
+Kitap Bulunamadı.
+} @else {
+<div class="m-3">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{kitap.id}} </td>
+            </tr>
+            <tr>
+                <th>Adı</th>
+                <td>{{kitap.adi}} </td>
+            </tr>
+            <tr>
+                <th>Yazar</th>
+                <td>{{kitap.yazar}} </td>
+            </tr>
+            <tr>
+                <th>Sayfa Sayısı</th>
+                <td>{{kitap.sayfaSayisi}} </td>
+            </tr>
+            <tr>
+                <th>Basım Tarihi</th>
+                <td>{{kitap.basimTarihi | date :'YYYY'}} </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button (click)="geri()" class="btn btn-info">Geri</button>
+        <button (click)="ileri()" class="btn btn-warning ms-3">İleri</button>
+    </div>
+    <button routerLink="/" class="btn btn-primary mt-3">Liste</button>
+</div>
+}
