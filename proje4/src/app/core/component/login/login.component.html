@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm">
+    <div>
+        Adı:
+        <input formControlName="adi" type="text" class="form-control"
+            [class.is-invalid]="loginForm.controls['adi'].touched && loginForm.controls['adi'].invalid" />
+    </div>
+    <div>
+        Email:
+        <input formControlName="email" type="text" class="form-control"
+            [class.is-invalid]="loginForm.controls['email'].touched && loginForm.controls['email'].invalid" />
+    </div>
+    <div>
+        <input class="btn btn-primary mt-3" (click)="giris('')" type="button" [disabled]="loginForm.invalid"
+            value="Giriş" />
+    </div>
+</form>
