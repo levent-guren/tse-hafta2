@@ -1,16 +1,35 @@
 <form [formGroup]="loginForm">
+    {{ loginForm.errors| json}}
     <div>
         Adı:
         <input formControlName="adi" type="text" class="form-control"
-            [class.is-invalid]="loginForm.controls['adi'].touched && loginForm.controls['adi'].invalid" />
+            [class.is-invalid]="get('adi').touched && get('adi').invalid" />
+        @if (get('adi').touched && get('adi').invalid) {
+        <small class="text-danger">Adı alanı boş geçilemez</small>
+        }
     </div>
     <div>
         Email:
         <input formControlName="email" type="text" class="form-control"
-            [class.is-invalid]="loginForm.controls['email'].touched && loginForm.controls['email'].invalid" />
+            [class.is-invalid]="get('email').touched && get('email').invalid" />
+        @if (get('email').touched && get('email').errors) {
+        @if (get('email').errors!['required']) {
+        <div><small class="text-danger">Email alanı boş geçilemez</small></div>
+        }
+        @if (get('email').errors!['minlength']) {
+        <div><small class="text-danger">Email alanı en az {{get('email').errors!['minlength'].requiredLength}} karakter
+                olmalıdır</small></div>
+        }
+        @if (get('email').errors!['pattern']) {
+        <div><small class="text-danger">Email alanı doğru girilmemiştir</small></div>
+        }
+
+        }
     </div>
     <div>
         <input class="btn btn-primary mt-3" (click)="giris('')" type="button" [disabled]="loginForm.invalid"
             value="Giriş" />
     </div>
 </form>
+<div>{{sayi1()}}</div>
+<div><button (click)="arttir()">Arttır</button></div>
